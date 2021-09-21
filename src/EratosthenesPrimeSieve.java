@@ -46,7 +46,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
         }
         primeList = new ArrayList<>();
         for (int i = 2; i < (allList.size()); i++) {
-            for (int j = 1; j < (allList.size()); j++) {
+            for (int j = 2; j < (allList.size()); j++) {
                 if (allList.contains(i*j)){
                     allList.remove((Integer)(i*j));
                 }
@@ -54,8 +54,9 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
 
         }
 
+        System.out.println("Alle Primzahlen von 2 bis "+upperNumber+" lauten: ");
         for (int i = 0; i < allList.size(); i++) {
-            System.out.println(allList.get(i));
+            System.out.println(allList.get(i)+": ist eine Primzahl");
         }
 
     }
