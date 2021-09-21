@@ -25,11 +25,11 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
             for (int j = 1; j < (p/2); j++) {
                 if (allList.contains(i*j)){
                     allList.remove((Integer)(i*j));
-                    primeList.add(i*j);
                 }
             }
 
         }
+
         if (allList.contains(p)){
             System.out.println("Die Zahl "+p+" ist eine Primzahl");
             return true;
@@ -40,6 +40,23 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
 
     @Override
     public void printPrimes() {
+        allList = new ArrayList<>();
+        for (int i = 2; i <= upperNumber; i++) {
+            allList.add(i);
+        }
+        primeList = new ArrayList<>();
+        for (int i = 2; i < (allList.size()); i++) {
+            for (int j = 1; j < (allList.size()); j++) {
+                if (allList.contains(i*j)){
+                    allList.remove((Integer)(i*j));
+                }
+            }
+
+        }
+
+        for (int i = 0; i < allList.size(); i++) {
+            System.out.println(allList.get(i));
+        }
 
     }
 }
