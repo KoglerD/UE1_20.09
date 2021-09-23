@@ -63,21 +63,27 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
 
     public void printPrimeSum(){
         evenNumbers = new ArrayList<>();
-        for (int i = 2; i < upperNumber; i++) {
+        for (int i = 2; i <= upperNumber++; i++) {
             evenNumbers.add(i);
             i++;
         }
 
-        boolean primeIsEven = false;
-        while (primeIsEven == false){
-            for (int i = 0; i < evenNumbers.size()-1; i++) {
-                for (int j = 0; j < evenNumbers.size()-1; j++) {
-                    if (evenNumbers.get(i)==(allList.get(j)+allList.get(j++))){
-                        System.out.println(evenNumbers.get(i)+" = "+allList.get(j)+" + "+allList.get(j++));
-                        primeIsEven = true;
+        boolean alreadyFound = false;
+
+        for (int i = 0; i < evenNumbers.size(); i++) {
+            alreadyFound = false;
+            for (int j = 0; j < allList.size(); j++) {
+                for (int k = 0; k < allList.size(); k++) {
+                    int primesTogether = allList.get(j)+allList.get(k);
+                    if (evenNumbers.get(i)==primesTogether){
+                        System.out.println(evenNumbers.get(i)+" = "+allList.get(j)+" + "+allList.get(k));
+                        alreadyFound = true;
+                        k = allList.size()-1;
+                        j = allList.size()-1;
                     }
                 }
             }
         }
+
     }
 }
