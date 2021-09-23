@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class EratosthenesPrimeSieve implements PrimeSieve{
 
     private int upperNumber;
-    private ArrayList<Integer> primeList;
+    private ArrayList<Integer> evenNumbers;
     private ArrayList<Integer> allList;
 
     public EratosthenesPrimeSieve(int upperNumber) {
@@ -17,10 +17,9 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
         }
 
         allList = new ArrayList<>();
-        for (int i = 2; i <= upperNumber; i++) {
+        for (int i = 2; i <= p; i++) {
             allList.add(i);
         }
-        primeList = new ArrayList<Integer>();
         for (int i = 2; i < (p); i++) {
             for (int j = 1; j < (p/2); j++) {
                 if (allList.contains(i*j)){
@@ -29,6 +28,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
             }
 
         }
+
 
         if (allList.contains(p)){
             System.out.println("Die Zahl "+p+" ist eine Primzahl");
@@ -44,7 +44,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
         for (int i = 2; i <= upperNumber; i++) {
             allList.add(i);
         }
-        primeList = new ArrayList<>();
+        evenNumbers = new ArrayList<>();
         for (int i = 2; i < (allList.size()); i++) {
             for (int j = 2; j < (allList.size()); j++) {
                 if (allList.contains(i*j)){
@@ -59,5 +59,25 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
             System.out.println(allList.get(i)+": ist eine Primzahl");
         }
 
+    }
+
+    public void printPrimeSum(){
+        evenNumbers = new ArrayList<>();
+        for (int i = 2; i < upperNumber; i++) {
+            evenNumbers.add(i);
+            i++;
+        }
+
+        boolean primeIsEven = false;
+        while (primeIsEven == false){
+            for (int i = 0; i < evenNumbers.size()-1; i++) {
+                for (int j = 0; j < evenNumbers.size()-1; j++) {
+                    if (evenNumbers.get(i)==(allList.get(j)+allList.get(j++))){
+                        System.out.println(evenNumbers.get(i)+" = "+allList.get(j)+" + "+allList.get(j++));
+                        primeIsEven = true;
+                    }
+                }
+            }
+        }
     }
 }
